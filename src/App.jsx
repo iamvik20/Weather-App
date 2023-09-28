@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import HomePage from './Pages/HomePage';
 
+
 function App() {
-  const apiKey = 'a6daee61bb24a8e6594150e4eab141e6';
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [errors, setErrors] = useState({
@@ -28,10 +28,9 @@ function App() {
       setLong(position.coords.longitude);
     });
     async function getGeoData() {
-      await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&APPID=${apiKey}`)
+      await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&APPID=${import.meta.env.VITE_API_KEY}`)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
           setWeatherData({
             name: data.name,
             country: data.sys.country,
@@ -65,12 +64,17 @@ function App() {
     fetchWeatherData(location);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      fetchWeatherData(location);
+    }
+  };
+
   const fetchWeatherData = (location) => {
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location},in&APPID=${apiKey}&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location},in&APPID=${import.meta.env.VITE_API_KEY}&units=metric`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setWeatherData({
           name: data.name,
           country: data.sys.country,
@@ -85,7 +89,7 @@ function App() {
         });
         setErrors(null);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrors({
           cod: 404,
           message: "City not found"
@@ -102,14 +106,8 @@ function App() {
         handleLocationChange={handleLocationChange}
         handleWeatherFetch={handleWeatherFetch}
         value={location}
+        onKeyPress={handleKeyPress}
       />
-      {/* <h1>Weather App</h1>
-      
-      {
-        errors && <p>{errors.message}</p> 
-      } */}
-
-      {/* {weatherData && <WeatherDisplay data={weatherData}  errors={errors} />} */}
     </div>
   );
 }

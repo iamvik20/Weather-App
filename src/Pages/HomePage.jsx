@@ -4,7 +4,7 @@
 import SerachBar from "../Components/SerachBar"
 import WeatherDisplay from "../Components/WeatherDisplay"
 
-function HomePage({ weatherData, handleLocationChange, handleWeatherFetch, errors, value }) {
+function HomePage({ weatherData, handleLocationChange, handleWeatherFetch, errors, value, onKeyPress }) {
     return (
         <section className="homepage">
             <div className="nav-menu">
@@ -13,6 +13,8 @@ function HomePage({ weatherData, handleLocationChange, handleWeatherFetch, error
                     location={value}
                     handleLocationChange={handleLocationChange}
                     handleWeatherFetch={handleWeatherFetch}
+                    onKeyPress={onKeyPress}
+                    errors={errors}
                 />
             </div>
             {weatherData && <WeatherDisplay data={weatherData} errors={errors} />}
