@@ -1,0 +1,65 @@
+.weather-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 2px;
+    height: calc(100vh - 70px);
+    background: url('../assets/backSky.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.weather-container h1 {
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2rem;
+    color: #FFFFDD;
+}
+
+.weather-display {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.weather-display img {
+    width: 200px;
+    height: fit-content;
+    
+}
+
+
+.weather-details {
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    color: #313866;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+
+@media (max-width: 420px) {
+    .weather-display {
+        flex-direction: column;
+    }
+
+    .weather-container {
+        height: calc(100vh - 100px);
+    }
+
+    
+    .weather-display img {
+        width: 100px;
+    }
+}
