@@ -25,7 +25,7 @@ function WeatherDisplay({ data }) {
                 <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="weather-icon" />
                 <div className="weather-details">
                     <p>Temperature: {temp}
-                        <span>
+                        <span className="convert-button">
                             <button onClick={toggleUnit}>
                                 °{unit === 'C' ? 'C' : 'F'}
                             </button>
