@@ -22,7 +22,7 @@ function WeatherDisplay({ data }) {
         <section className="weather-container">
             <h1>Current Weather in {name} , {country} </h1>
             <div className="weather-display">
-                <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="weather-icon" />
+                <img src={`https://openweathermap.org/img/w/${icon}.png`} alt="weather-icon" />
                 <div className="weather-details">
                     <p>Temperature: {temp}
                         <span className="convert-button">
