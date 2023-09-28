@@ -28,7 +28,7 @@ function App() {
       setLong(position.coords.longitude);
     });
     async function getGeoData() {
-      await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&APPID=${import.meta.env.VITE_API_KEY}`)
+      await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.VITE_API_KEY}`)
         .then(res => res.json())
         .then(data => {
           setWeatherData({
@@ -72,7 +72,7 @@ function App() {
 
   const fetchWeatherData = (location) => {
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location},in&APPID=${import.meta.env.VITE_API_KEY}&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location},in&APPID=${process.env.VITE_API_KEY}&units=metric`)
       .then((response) => response.json())
       .then((data) => {
         setWeatherData({
